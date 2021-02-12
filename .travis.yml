@@ -16,6 +16,13 @@ install:
   - pip install codacy-coverage
 script:
   - cd decide
-  - coverage run --branch --source=. ./manage.py test --keepdb --with-xunit
+  - coverage run --branch --source=. ./manage.py test voting --keepdb --with-xunit
   - coverage xml
   - python-codacy-coverage -r coverage.xml
+
+notifications:
+  email:
+    recipients:
+      - frasanmat1@alum.us.es
+    on_success: never
+    on_failure: always
